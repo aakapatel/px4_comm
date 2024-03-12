@@ -30,7 +30,11 @@ void px4_communication::callback_roll_pitch_yawrate_thrust(
   target.body_rate.x = 0;
   target.body_rate.y = 0;
   target.body_rate.z = msg->yaw_rate;
-    scaled_thrust = 0.030 * (msg->thrust.z);
+  scaled_thrust = thrust_coeff_ * (msg->thrust.z);
+  
+  std::cout << "thrust_coefficient" << thrust_coeff_ << std::endl;
+
+  // scaled_thrust = 0.030 * (msg->thrust.z);
   //target.thrust = (1/30) * (msg->thrust.z);
   target.thrust = scaled_thrust;
 
@@ -122,6 +126,9 @@ px4_communication::px4_communication(ros::NodeHandle& pub_nh,
   //
   // Local variables
   //
+
+  priv_nh_.param("thrust_coefficient", thrust_coeff_, thrust_coeff_);
+
   status_msg_.battery_voltage = 0;
   status_msg_.command_interface_enabled = false;
   status_msg_.cpu_load = 0;

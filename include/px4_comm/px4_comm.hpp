@@ -57,7 +57,9 @@ private:
   // Local variables
   mav_msgs::Status status_msg_;
   double current_yaw;
-double scaled_thrust = 0;
+  double scaled_thrust = 0;
+  double thrust_coeff_ = 0.025;
+
 public:
 
   px4_communication(ros::NodeHandle &pub_nh, ros::NodeHandle &priv_nh);
