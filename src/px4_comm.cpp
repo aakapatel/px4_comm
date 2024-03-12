@@ -32,7 +32,7 @@ void px4_communication::callback_roll_pitch_yawrate_thrust(
   target.body_rate.z = msg->yaw_rate;
   scaled_thrust = thrust_coeff_ * (msg->thrust.z);
   
-  std::cout << "thrust_coefficient" << thrust_coeff_ << std::endl;
+  // std::cout << "thrust_coefficient" << thrust_coeff_ << std::endl;
 
   // scaled_thrust = 0.030 * (msg->thrust.z);
   //target.thrust = (1/30) * (msg->thrust.z);
