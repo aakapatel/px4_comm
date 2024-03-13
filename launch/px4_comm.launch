@@ -1,8 +1,10 @@
 <launch>
 
+  <arg name="log_output" default="screen" />
+
  <node pkg="px4_comm" type="px4_comm_node" name="px4_comm" output="$(arg log_output)" >
  
-    <param name="thrust_coefficient" value="0.030" />
+    <param name="thrust_coefficient" value="0.025" />
  
  </node>
 
